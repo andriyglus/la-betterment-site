@@ -30,7 +30,7 @@ export default function App() {
         padding: "100px 20px 70px"
       }}>
         <h1 style={{ fontSize: "3rem", marginBottom: "25px" }}>
-          A&L Betterment Co
+          L&A Betterment Co
         </h1>
 
         <p style={{
@@ -115,7 +115,7 @@ export default function App() {
           lineHeight: "1.9",
           opacity: 0.9
         }}>
-          <p>Email: contact@albetterment.co</p>
+          <p>Email: contact@labetterment.co</p>
           <p>Phone: (780) XXX-XXXX</p>
         </div>
       </section>
