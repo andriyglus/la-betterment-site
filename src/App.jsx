@@ -1,98 +1,160 @@
 export default function App() {
-  return (
-    <div style={{
-      fontFamily: "Arial, sans-serif",
-      background: "#0b1220",
-      color: "white",
-      minHeight: "100vh"
-    }}>
+  const sectionTitle = {
+    color: "#000",
+    marginBottom: "30px"
+  };
 
+  const borderStyle = "1px solid #000";
+
+  return (
+    <div
+      style={{
+        fontFamily: "system-ui, Arial, sans-serif",
+        background: "#ffffff",
+        color: "#1a1a1a",
+        minHeight: "100vh",
+        width: "100%",
+        margin: 0,
+        padding: 0,
+        boxSizing: "border-box",
+        overflowX: "hidden"
+      }}
+    >
       {/* NAV */}
-      <div style={{
-        position: "sticky",
-        top: 0,
-        display: "flex",
-        justifyContent: "center",
-        gap: "25px",
-        padding: "15px",
-        background: "rgba(11,18,32,0.9)",
-        backdropFilter: "blur(10px)",
-        borderBottom: "1px solid rgba(255,255,255,0.08)"
-      }}>
-        <a href="#about" style={{ color: "white", textDecoration: "none" }}>About</a>
-        <a href="#services" style={{ color: "white", textDecoration: "none" }}>Services</a>
-        <a href="#contact" style={{ color: "white", textDecoration: "none" }}>Contact</a>
-      </div>
+      <header
+        style={{
+          position: "sticky",
+          top: 0,
+          background: "#ffffff",
+          borderBottom: borderStyle,
+          display: "flex",
+          justifyContent: "center",
+          gap: "30px",
+          padding: "16px",
+          fontSize: "0.95rem",
+          fontWeight: 500
+        }}
+      >
+        <a href="#about" style={{ color: "#000", textDecoration: "none" }}>
+          About
+        </a>
+        <a href="#services" style={{ color: "#000", textDecoration: "none" }}>
+          Services
+        </a>
+        <a href="#contact" style={{ color: "#000", textDecoration: "none" }}>
+          Contact
+        </a>
+      </header>
 
       {/* HERO */}
-      <div style={{
-        textAlign: "center",
-        padding: "100px 20px 70px"
-      }}>
-        <h1 style={{ fontSize: "3rem", marginBottom: "25px" }}>
-          L&A Betterment Co
+      <section
+        style={{
+          minHeight: "90vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          padding: "0 20px",
+          width: "100%",
+          background: "#ffffff"
+        }}
+      >
+        <h1 style={{ fontSize: "3.4rem", marginBottom: "18px", color: "#000" }}>
+          A&L Betterment Co
         </h1>
 
-        <p style={{
-          opacity: 0.8,
-          fontSize: "1.2rem",
-          maxWidth: "650px",
-          margin: "0 auto",
-          lineHeight: "1.6"
-        }}>
+        <p
+          style={{
+            fontSize: "1.2rem",
+            color: "#555",
+            maxWidth: "700px",
+            lineHeight: "1.7"
+          }}
+        >
           Reliable all-purpose labour services for homes, yards, and everyday projects.
-        </p>
-      </div>
-
-      {/* ABOUT */}
-      <section id="about" style={{
-        padding: "70px 20px",
-        textAlign: "center",
-        maxWidth: "800px",
-        margin: "0 auto"
-      }}>
-        <h2>About Us</h2>
-
-        <p style={{ opacity: 0.85, lineHeight: "1.7", marginTop: "15px" }}>
-          We are an all-purpose labour team built on discipline, hard work, and reliability.
-          Our mission is to improve the spaces and lives around us through consistent,
-          high-quality service. Every job is approached with care, respect, and attention to detail.
         </p>
       </section>
 
-      {/* SERVICES */}
-      <section id="services" style={{
-        padding: "70px 20px",
-        background: "rgba(255,255,255,0.03)",
-        textAlign: "center"
-      }}>
-        <h2>Services</h2>
+      {/* ABOUT */}
+      <section
+        id="about"
+        style={{
+          padding: "100px 20px",
+          display: "flex",
+          justifyContent: "center",
+          width: "100%",
+          background: "#ffffff"
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "850px",
+            width: "100%",
+            background: "#ffffff",
+            border: borderStyle,
+            borderRadius: "16px",
+            padding: "35px"
+          }}
+        >
+          <h2 style={sectionTitle}>About Us</h2>
 
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-          gap: "15px",
-          maxWidth: "900px",
-          margin: "30px auto"
-        }}>
+          <p
+            style={{
+              color: "#555",
+              lineHeight: "1.8",
+              marginTop: "12px"
+            }}
+          >
+            Founded by two high school students, Andriy and Laith, A&L Betterment Co
+            is built on discipline, hard work, and a strong commitment to service.
+            We are dedicated to improving the world around us and giving back to
+            our community through reliable, high-quality work.
+          </p>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section
+        id="services"
+        style={{
+          padding: "100px 20px",
+          background: "#ffffff",
+          textAlign: "center",
+          width: "100%"
+        }}
+      >
+        <h2 style={sectionTitle}>Services</h2>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "16px",
+            maxWidth: "950px",
+            margin: "0 auto"
+          }}
+        >
           {[
             "Landscaping",
             "Gardening",
             "Cleaning",
-            "Moving Help",
+            "Moving Assistance",
             "Babysitting",
-            "Yard Work",
+            "Yard Maintenance",
             "Home Organization",
             "General Labour",
             "Basic Repairs"
-            
           ].map((service) => (
-            <div key={service} style={{
-              padding: "15px",
-              border: "1px solid rgba(255,255,255,0.1)",
-              borderRadius: "12px",
-              background: "rgba(255,255,255,0.02)"
-            }}>
+            <div
+              key={service}
+              style={{
+                padding: "18px",
+                borderRadius: "12px",
+                border: borderStyle,
+                background: "#ffffff"
+              }}
+            >
               {service}
             </div>
           ))}
@@ -100,26 +162,57 @@ export default function App() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" style={{
-        padding: "70px 20px",
-        textAlign: "center"
-      }}>
-        <h2>Contact</h2>
+      <section
+        id="contact"
+        style={{
+          padding: "100px 20px",
+          display: "flex",
+          justifyContent: "center",
+          width: "100%",
+          background: "#ffffff"
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "700px",
+            width: "100%",
+            background: "#ffffff",
+            border: borderStyle,
+            borderRadius: "16px",
+            padding: "35px",
+            textAlign: "center"
+          }}
+        >
+          <h2 style={sectionTitle}>Contact</h2>
 
-        <p style={{ opacity: 0.8, marginTop: "10px" }}>
-          For bookings, quotes, or availability, reach out using the details below.
-        </p>
-
-        <div style={{
-          marginTop: "25px",
-          lineHeight: "1.9",
-          opacity: 0.9
-        }}>
-          <p>Email: contact@labetterment.co</p>
-          <p>Phone: (780) XXX-XXXX</p>
+          <div
+            style={{
+              marginTop: "20px",
+              lineHeight: "2",
+              fontSize: "1.05rem",
+              color: "#555"
+            }}
+          >
+            <p>Email: contact@albetterment.co</p>
+            <p>Phone: (780) XXX-XXXX</p>
+          </div>
         </div>
       </section>
 
+      {/* FOOTER */}
+      <footer
+        style={{
+          textAlign: "center",
+          padding: "30px",
+          fontSize: "0.85rem",
+          color: "#888",
+          borderTop: borderStyle,
+          width: "100%",
+          background: "#ffffff"
+        }}
+      >
+        © {new Date().getFullYear()} A&L Betterment Co. Built by Andriy & Laith.
+      </footer>
     </div>
   );
 }
