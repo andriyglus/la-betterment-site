@@ -1,19 +1,41 @@
+/* ===== LIGHT MODE VARIABLES ===== */
+:root {
+  --bg: #ffffff;
+  --text: #555555;
+  --text-h: #1a1a1a;
+  --border: #dddddd;
+  --nav-bg: #ffffff;
+}
+
+/* ===== DARK MODE VARIABLES ===== */
+:root.dark {
+  --bg: #16171d;
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --border: #2e303a;
+  --nav-bg: #16171d;
+}
+
 /* ===== GLOBAL RESET ===== */
-* {
+*, *::before, *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
   width: 100%;
   overflow-x: hidden;
   font-family: system-ui, -apple-system, Arial, sans-serif;
-  background: #f7f8fc;
-  color: #1a1a1a;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
 }
 
-/* ===== BASIC LAYOUT HELPERS ===== */
 a {
   text-decoration: none;
   color: inherit;
@@ -23,23 +45,19 @@ h1, h2, h3, p {
   margin: 0;
 }
 
-/* ===== NAV STYLING (if used) ===== */
-nav, header {
-  width: 100%;
-}
-
-/* ===== BUTTON RESET (optional safety) ===== */
 button {
   font-family: inherit;
 }
 
-/* ===== SERVICE GRID SAFETY ===== */
 img, svg {
   max-width: 100%;
   display: block;
 }
 
-/* ===== OPTIONAL: SMOOTH SCROLL ===== */
-html {
-  scroll-behavior: smooth;
+/* ===== ROOT ===== */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
