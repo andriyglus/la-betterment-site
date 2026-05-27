@@ -1,14 +1,23 @@
 import { useState, useEffect } from "react";
-import "./App.css";
+import "./app.css";
 
 export default function App() {
   const [dark, setDark] = useState(
     () => window.matchMedia("(prefers-color-scheme: dark)").matches
   );
 
+  const [slide, setSlide] = useState(0);
+
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSlide(prev => (prev + 1) % 3);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div style={{ background: "var(--bg)", color: "var(--text)", minHeight: "100vh", width: "100%", transition: "background 0.3s, color 0.3s" }}>
@@ -59,13 +68,49 @@ export default function App() {
         alignItems: "center",
         textAlign: "center",
         padding: "0 20px",
-        background: "var(--bg)",
-        transition: "background 0.3s"
+        position: "relative",
+        overflow: "hidden"
       }}>
-        <h1 style={{ fontSize: "3.4rem", marginBottom: "18px", color: "var(--text-h)" }}>
+        {/* BACKGROUND SLIDESHOW */}
+        {["/garden.jpg", "/lawn.jpg", "/rocks.jpg"].map((img, i) => (
+          <div key={img} style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url(${img})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: slide === i ? 1 : 0,
+            transition: "opacity 1.5s ease-in-out",
+            zIndex: 0
+          }} />
+        ))}
+
+        {/* DARK OVERLAY */}
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(0,0,0,0.45)",
+          zIndex: 1
+        }} />
+
+        {/* TEXT */}
+        <h1 style={{
+          fontSize: "3.4rem",
+          marginBottom: "18px",
+          color: "#ffffff",
+          position: "relative",
+          zIndex: 2
+        }}>
           L&A Betterment Co
         </h1>
-        <p style={{ fontSize: "1.2rem", color: "var(--text)", maxWidth: "700px", lineHeight: "1.7" }}>
+        <p style={{
+          fontSize: "1.2rem",
+          color: "#eeeeee",
+          maxWidth: "700px",
+          lineHeight: "1.7",
+          position: "relative",
+          zIndex: 2
+        }}>
           Reliable all-purpose labour services for homes, yards, and everyday projects.
         </p>
       </section>
