@@ -19,6 +19,18 @@ export default function App() {
     return () => clearInterval(timer);
   }, []);
 
+  const services = [
+    { name: "Landscaping", emoji: "🌿" },
+    { name: "Gardening", emoji: "🌱" },
+    { name: "Cleaning", emoji: "🧹" },
+    { name: "Moving Assistance", emoji: "📦" },
+    { name: "Babysitting", emoji: "👶" },
+    { name: "Yard Maintenance", emoji: "🍂" },
+    { name: "Home Organization", emoji: "🏠" },
+    { name: "General Labour", emoji: "🔧" },
+    { name: "Basic Repairs", emoji: "🛠️" },
+  ];
+
   return (
     <div style={{ background: "var(--bg)", color: "var(--text)", minHeight: "100vh", width: "100%", transition: "background 0.3s, color 0.3s" }}>
 
@@ -61,7 +73,7 @@ export default function App() {
 
       {/* HERO */}
       <section style={{
-        minHeight: "90vh",
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -89,35 +101,89 @@ export default function App() {
         <div style={{
           position: "absolute",
           inset: 0,
-          background: "rgba(0,0,0,0.45)",
+          background: "rgba(0,0,0,0.5)",
           zIndex: 1
         }} />
 
+        {/* BOTTOM GRADIENT FADE */}
+        <div style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: "180px",
+          background: `linear-gradient(to bottom, transparent, var(--bg))`,
+          zIndex: 2
+        }} />
+
         {/* TEXT */}
-        <h1 style={{
-          fontSize: "3.4rem",
-          marginBottom: "18px",
-          color: "#ffffff",
-          position: "relative",
-          zIndex: 2
+        <div style={{ position: "relative", zIndex: 3 }}>
+          <h1 style={{
+            fontSize: "clamp(2.2rem, 6vw, 4rem)",
+            marginBottom: "18px",
+            color: "#ffffff",
+            letterSpacing: "-1px"
+          }}>
+            L&A Betterment Co
+          </h1>
+          <p style={{
+            fontSize: "1.2rem",
+            color: "#dddddd",
+            maxWidth: "600px",
+            lineHeight: "1.7",
+            marginBottom: "32px"
+          }}>
+            Reliable all-purpose labour services for homes, yards, and everyday projects.
+          </p>
+          <a href="#contact" style={{
+            display: "inline-block",
+            background: "#ffffff",
+            color: "#111111",
+            padding: "12px 32px",
+            borderRadius: "50px",
+            fontWeight: 600,
+            fontSize: "1rem",
+            textDecoration: "none",
+            transition: "transform 0.2s, box-shadow 0.2s",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.3)"
+          }}
+            onMouseEnter={e => e.target.style.transform = "scale(1.05)"}
+            onMouseLeave={e => e.target.style.transform = "scale(1)"}
+          >
+            Get a Quote
+          </a>
+        </div>
+
+        {/* SLIDE DOTS */}
+        <div style={{
+          position: "absolute",
+          bottom: "200px",
+          display: "flex",
+          gap: "8px",
+          zIndex: 3
         }}>
-          L&A Betterment Co
-        </h1>
-        <p style={{
-          fontSize: "1.2rem",
-          color: "#eeeeee",
-          maxWidth: "700px",
-          lineHeight: "1.7",
-          position: "relative",
-          zIndex: 2
-        }}>
-          Reliable all-purpose labour services for homes, yards, and everyday projects.
-        </p>
+          {[0, 1, 2].map(i => (
+            <button
+              key={i}
+              onClick={() => setSlide(i)}
+              style={{
+                width: slide === i ? "24px" : "8px",
+                height: "8px",
+                borderRadius: "50px",
+                background: slide === i ? "#ffffff" : "rgba(255,255,255,0.4)",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                transition: "all 0.3s"
+              }}
+            />
+          ))}
+        </div>
       </section>
 
       {/* ABOUT */}
       <section id="about" style={{
-        padding: "100px 20px",
+        padding: "80px 20px",
         display: "flex",
         justifyContent: "center",
         background: "var(--bg)",
@@ -127,11 +193,12 @@ export default function App() {
           maxWidth: "850px",
           width: "100%",
           border: "1px solid var(--border)",
+          borderLeft: "4px solid #4ade80",
           borderRadius: "16px",
           padding: "35px",
           transition: "border-color 0.3s"
         }}>
-          <h2 style={{ color: "var(--text-h)", marginBottom: "30px" }}>About Us</h2>
+          <h2 style={{ color: "var(--text-h)", marginBottom: "16px" }}>About Us</h2>
           <p style={{ color: "var(--text)", lineHeight: "1.8" }}>
             Founded by two high school students, Andriy and Laith, L&A Betterment Co
             is built on discipline, hard work, and a strong commitment to service.
@@ -143,12 +210,15 @@ export default function App() {
 
       {/* SERVICES */}
       <section id="services" style={{
-        padding: "100px 20px",
+        padding: "80px 20px",
         background: "var(--bg)",
         textAlign: "center",
         transition: "background 0.3s"
       }}>
-        <h2 style={{ color: "var(--text-h)", marginBottom: "30px" }}>Services</h2>
+        <h2 style={{ color: "var(--text-h)", marginBottom: "8px" }}>Services</h2>
+        <p style={{ color: "var(--text)", marginBottom: "40px", fontSize: "1rem" }}>
+          Here's what we can help you with
+        </p>
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
@@ -156,19 +226,30 @@ export default function App() {
           maxWidth: "950px",
           margin: "0 auto"
         }}>
-          {[
-            "Landscaping", "Gardening", "Cleaning",
-            "Moving Assistance", "Babysitting", "Yard Maintenance",
-            "Home Organization", "General Labour", "Basic Repairs"
-          ].map((service) => (
-            <div key={service} style={{
-              padding: "18px",
-              borderRadius: "12px",
-              border: "1px solid var(--border)",
-              color: "var(--text-h)",
-              transition: "border-color 0.3s, color 0.3s"
-            }}>
-              {service}
+          {services.map(({ name, emoji }) => (
+            <div
+              key={name}
+              style={{
+                padding: "24px 18px",
+                borderRadius: "12px",
+                border: "1px solid var(--border)",
+                color: "var(--text-h)",
+                cursor: "default",
+                transition: "border-color 0.25s, transform 0.25s, box-shadow 0.25s"
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = "#4ade80";
+                e.currentTarget.style.transform = "translateY(-4px)";
+                e.currentTarget.style.boxShadow = "0 8px 24px rgba(74,222,128,0.15)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = "var(--border)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              <div style={{ fontSize: "1.8rem", marginBottom: "10px" }}>{emoji}</div>
+              {name}
             </div>
           ))}
         </div>
@@ -176,9 +257,10 @@ export default function App() {
 
       {/* CONTACT */}
       <section id="contact" style={{
-        padding: "100px 20px",
+        padding: "80px 20px",
         display: "flex",
-        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
         background: "var(--bg)",
         transition: "background 0.3s"
       }}>
@@ -189,13 +271,35 @@ export default function App() {
           borderRadius: "16px",
           padding: "35px",
           textAlign: "center",
+          marginBottom: "32px",
           transition: "border-color 0.3s"
         }}>
           <h2 style={{ color: "var(--text-h)", marginBottom: "30px" }}>Contact</h2>
           <div style={{ marginTop: "20px", lineHeight: "2", fontSize: "1.05rem", color: "var(--text)" }}>
-            <p>Email: contact@albetterment.co</p>
-            <p>Phone: (780) XXX-XXXX</p>
+            <p>📧 Email: contact@albetterment.co</p>
+            <p>📞 Phone: (780) XXX-XXXX</p>
+            <p>📍 Edmonton, Alberta</p>
           </div>
+        </div>
+
+        {/* GOOGLE MAPS EMBED */}
+        <div style={{
+          maxWidth: "700px",
+          width: "100%",
+          borderRadius: "16px",
+          overflow: "hidden",
+          border: "1px solid var(--border)"
+        }}>
+          <iframe
+            title="Edmonton Map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d154142.87579920475!2d-113.71320!3d53.52700!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53a0224580deff23%3A0x411fa00e29948bdb!2sEdmonton%2C%20AB!5e0!3m2!1sen!2sca!4v1680000000000"
+            width="100%"
+            height="300"
+            style={{ border: 0, display: "block" }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
 
