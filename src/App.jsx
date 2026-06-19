@@ -41,34 +41,51 @@ export default function App() {
         background: "var(--nav-bg)",
         borderBottom: "1px solid var(--border)",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "space-between",
         alignItems: "center",
-        gap: "30px",
-        padding: "16px",
+        padding: "10px 24px",
         fontSize: "0.95rem",
         fontWeight: 500,
         zIndex: 100,
         transition: "background 0.3s, border-color 0.3s"
       }}>
-        <a href="#about" style={{ color: "var(--text-h)" }}>About</a>
-        <a href="#services" style={{ color: "var(--text-h)" }}>Services</a>
-        <a href="#contact" style={{ color: "var(--text-h)" }}>Contact</a>
+        <div style={{
+          background: dark ? "#000000" : "#ffffff",
+          border: "1px solid var(--border)",
+          padding: "8px 14px",
+          borderRadius: "10px",
+          display: "flex",
+          alignItems: "center",
+          transition: "background 0.3s"
+        }}>
+          <img
+            src={dark ? "/la-logo-white.png" : "/la-logo.png"}
+            alt="L&A Betterment Co logo"
+            style={{ height: "34px", width: "auto" }}
+          />
+        </div>
 
-        <button
-          onClick={() => setDark(!dark)}
-          style={{
-            background: "none",
-            border: "1px solid var(--border)",
-            borderRadius: "8px",
-            padding: "4px 12px",
-            cursor: "pointer",
-            fontSize: "0.9rem",
-            color: "var(--text-h)",
-            transition: "border-color 0.3s, color 0.3s"
-          }}
-        >
-          {dark ? "☀️ Light" : "🌙 Dark"}
-        </button>
+        <div style={{ display: "flex", alignItems: "center", gap: "30px" }}>
+          <a href="#about" style={{ color: "var(--text-h)" }}>About</a>
+          <a href="#services" style={{ color: "var(--text-h)" }}>Services</a>
+          <a href="#contact" style={{ color: "var(--text-h)" }}>Contact</a>
+
+          <button
+            onClick={() => setDark(!dark)}
+            style={{
+              background: "none",
+              border: "1px solid var(--border)",
+              borderRadius: "8px",
+              padding: "4px 12px",
+              cursor: "pointer",
+              fontSize: "0.9rem",
+              color: "var(--text-h)",
+              transition: "border-color 0.3s, color 0.3s"
+            }}
+          >
+            {dark ? "☀️ Light" : "🌙 Dark"}
+          </button>
+        </div>
       </header>
 
       {/* HERO */}
@@ -277,8 +294,7 @@ export default function App() {
           <h2 style={{ color: "var(--text-h)", marginBottom: "30px" }}>Contact</h2>
           <div style={{ marginTop: "20px", lineHeight: "2", fontSize: "1.05rem", color: "var(--text)" }}>
             <p>📧 Email: contact@albetterment.co</p>
-            <p>📞 Andriy: (368) 998-4297</p>
-            <p>📞 Laith: (780) 278-8683</p>
+            <p>📞 Phone: (780) XXX-XXXX</p>
             <p>📍 Edmonton, Alberta</p>
           </div>
         </div>
