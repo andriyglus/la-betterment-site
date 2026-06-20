@@ -293,8 +293,9 @@ export default function App() {
         }}>
           <h2 style={{ color: "var(--text-h)", marginBottom: "30px" }}>Contact</h2>
           <div style={{ marginTop: "20px", lineHeight: "2", fontSize: "1.05rem", color: "var(--text)" }}>
-            <p>📧 Email: contact@albetterment.co</p>
-            <p>📞 Phone: (780) XXX-XXXX</p>
+            <p>📧 Email: andriyglus@gmail.com</p>
+            <p>📞 Andriy: (368) 998-4297</p>
+            <p>📞 Laith: (780) 278-8683</p>
             <p>📍 Edmonton, Alberta</p>
           </div>
         </div>
